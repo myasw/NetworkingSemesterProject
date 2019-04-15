@@ -45,7 +45,7 @@ import java.awt.*;
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame("Banking GUI");
+		frame = new JFrame("Mobile Banking GUI");
 		frame.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		frame.setBounds(0, 0, 800, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
