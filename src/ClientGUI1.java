@@ -1,16 +1,7 @@
 import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JRadioButton;
-import javax.swing.JMenu;
-import java.awt.Panel;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
  public class ClientGUI1 {
 
