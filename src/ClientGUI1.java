@@ -1,5 +1,3 @@
-import java.awt.EventQueue;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -19,6 +17,7 @@ import java.awt.*;
 	private JButton btnNewButton_3;
 	private JButton btnNewButton_4;
 	private JButton btnNewButton_5;
+	private JButton btnAddUser;
 
  	/**
 	 * Launch the application.
@@ -56,7 +55,7 @@ import java.awt.*;
  		JLabel lblNewLabel = new JLabel("Hello...\nWhat would you like to do?");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		lblNewLabel.setBounds(142, 187, 501, 58);
+		lblNewLabel.setBounds(148, 152, 501, 58);
 		frame.getContentPane().add(lblNewLabel);
 
  		textField = new JTextField();
@@ -149,6 +148,11 @@ import java.awt.*;
 
  		panel.add(checkingButton);
 		panel.add(savingsButton);
+		
+		btnAddUser = new JButton("New Account");
+		btnAddUser.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		btnAddUser.setBounds(281, 242, 218, 38);
+		frame.getContentPane().add(btnAddUser);
 
 
 
