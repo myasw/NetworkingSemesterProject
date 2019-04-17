@@ -1,9 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
  public class ClientMobile {
 
  	private JFrame frame;
+ 	private JFrame frame2;
 	private JTextField userTextField;
 	private JTextField textField_1;
 	private JLabel userLabel;
@@ -26,7 +29,8 @@ import java.awt.*;
 			public void run() {
 				try {
 					ClientMobile window = new ClientMobile();
-					window.frame.setVisible(true);
+					window.frame.setVisible(false);
+					window.frame2.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -50,6 +54,12 @@ import java.awt.*;
 		frame.setBounds(0, 0, 800, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		frame2 = new JFrame("Login");
+		frame2.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 14));
+		frame2.setBounds(0, 0, 800, 800);
+		frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame2.getContentPane().setLayout(null);
 
  		JLabel iDFText = new JLabel("Hello...\nWhat would you like to do?");
 		iDFText.setHorizontalAlignment(SwingConstants.CENTER);
@@ -60,31 +70,31 @@ import java.awt.*;
  		userTextField = new JTextField();
 		userTextField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		userTextField.setBounds(90, 42, 218, 33);
-		frame.getContentPane().add(userTextField);
+		frame2.getContentPane().add(userTextField);
 		userTextField.setColumns(10);
 
  		textField_1 = new JTextField();
 		textField_1.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		textField_1.setBounds(457, 42, 218, 33);
-		frame.getContentPane().add(textField_1);
+		frame2.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 
  		userLabel = new JLabel("Username");
 		userLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		userLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		userLabel.setBounds(90, 15, 218, 15);
-		frame.getContentPane().add(userLabel);
+		frame2.getContentPane().add(userLabel);
 
  		pswdTextField = new JLabel("Password");
 		pswdTextField.setHorizontalAlignment(SwingConstants.CENTER);
 		pswdTextField.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		pswdTextField.setBounds(457, 12, 218, 21);
-		frame.getContentPane().add(pswdTextField);
+		frame2.getContentPane().add(pswdTextField);
 
  		JButton connectBtn = new JButton("Connect");
 		connectBtn.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		connectBtn.setBounds(90, 102, 218, 38);
-		frame.getContentPane().add(connectBtn);
+		frame2.getContentPane().add(connectBtn);
 
  		disconnectBtn = new JButton("Disconnect");
 		disconnectBtn.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -151,7 +161,13 @@ import java.awt.*;
 		newAcctBtn = new JButton("New Account");
 		newAcctBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		newAcctBtn.setBounds(281, 242, 218, 38);
-		frame.getContentPane().add(newAcctBtn);
+		newAcctBtn.addActionListener(new ActionListener() { 
+			public void actionPerformed(ActionEvent e) { 
+				  frame2.dispose();
+				  frame.setVisible(true);
+			} 
+		});
+		frame2.getContentPane().add(newAcctBtn);
 
 
 
