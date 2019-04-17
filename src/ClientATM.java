@@ -2,10 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
- public class ClientMobile {
- 	public ClientMobile()
+ public class ClientATM {
+ 	public ClientATM()
  	{
- 	    JFrame frame = new JFrame("Mobile Banking GUI");
+ 	    JFrame frame = new JFrame("ATM Banking GUI");
 		frame.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		frame.setBounds(0, 0, 800, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,32 +34,27 @@ import java.awt.event.*;
 		balanceBtn.setBounds(90, 385, 218, 38);
 		frame.getContentPane().add(balanceBtn);
 		
-		JTextField scoreField = new JTextField();
-		scoreField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		scoreField.setBounds(457, 334, 218, 39);
-		frame.getContentPane().add(scoreField);
-		scoreField.setColumns(10);
+		JTextField depositField = new JTextField();
+		depositField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		depositField.setBounds(457, 334, 218, 39);
+		frame.getContentPane().add(depositField);
+		depositField.setColumns(10);
 
- 		JButton freezeBtn = new JButton("Freeze Credit Card");
-		freezeBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		freezeBtn.setBounds(457, 460, 218, 48);
-		frame.getContentPane().add(freezeBtn);
+ 		JTextField withdrawField = new JTextField();
+		withdrawField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+		withdrawField.setBounds(457, 459, 218, 38);
+		frame.getContentPane().add(withdrawField);
+		withdrawField.setColumns(10);
+		
+		JButton depositBtn = new JButton("Deposit");
+		depositBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		depositBtn.setBounds(457, 385, 218, 38);
+		frame.getContentPane().add(depositBtn);
 
- 		JTextField transferField = new JTextField();
-		transferField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		transferField.setBounds(457, 558, 218, 38);
-		frame.getContentPane().add(transferField);
-		transferField.setColumns(10);
-
- 		JButton scoreBtn = new JButton("Credit Score");
-		scoreBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		scoreBtn.setBounds(457, 385, 218, 38);
-		frame.getContentPane().add(scoreBtn);
-
- 		JButton transferBtn = new JButton("Transfer To...");
-		transferBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		transferBtn.setBounds(457, 608, 218, 48);
-		frame.getContentPane().add(transferBtn);
+ 		JButton withdrawBtn = new JButton("Withdraw");
+		withdrawBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		withdrawBtn.setBounds(457, 509, 218, 48);
+		frame.getContentPane().add(withdrawBtn);
 		
 		JPanel radioPanel2 = new JPanel();
 		radioPanel2.setBounds(105, 526, 186, 99);
