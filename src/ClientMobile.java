@@ -215,7 +215,7 @@ import java.awt.event.ActionListener;
 		
 		frame2.getContentPane().add(newAcctBtn);
 
-		frame3 = new JFrame("Mobile Banking GUI");
+		frame3 = new JFrame("ATM Banking GUI");
 		frame3.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		frame3.setBounds(0, 0, 800, 800);
 		frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
