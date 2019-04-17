@@ -11,6 +11,7 @@ import java.awt.event.*;
     private JLabel pswdLabel;
     private JButton newAcctBtn;
     private JButton connectBtn;
+    private JTextField ipTextField;
 
     /**
      * Launch the application.
@@ -71,7 +72,7 @@ import java.awt.event.*;
         
         connectBtn = new JButton("Connect");
         connectBtn.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        connectBtn.setBounds(90, 102, 218, 38);
+        connectBtn.setBounds(90, 139, 218, 38);
         frame.getContentPane().add(connectBtn);
         connectBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -86,6 +87,18 @@ import java.awt.event.*;
         newAcctBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
         newAcctBtn.setBounds(281, 242, 218, 38);
         frame.getContentPane().add(newAcctBtn);
+        
+        JLabel ipLabel = new JLabel("IP Address of Server");
+        ipLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        ipLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        ipLabel.setBounds(457, 117, 218, 15);
+        frame.getContentPane().add(ipLabel);
+        
+        ipTextField = new JTextField();
+        ipTextField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        ipTextField.setColumns(10);
+        ipTextField.setBounds(457, 144, 218, 33);
+        frame.getContentPane().add(ipTextField);
         newAcctBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();

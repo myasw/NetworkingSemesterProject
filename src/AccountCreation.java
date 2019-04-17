@@ -24,55 +24,55 @@ import java.awt.event.*;
 
  		JTextField firstNameField = new JTextField();
 		firstNameField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		firstNameField.setBounds(90, 334, 218, 39);
+		firstNameField.setBounds(430, 310, 218, 39);
 		frame.getContentPane().add(firstNameField);
 		firstNameField.setColumns(10);
 
  		JTextField lastNameField = new JTextField();
 		lastNameField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		lastNameField.setBounds(90, 403, 218, 39);
+		lastNameField.setBounds(431, 378, 218, 39);
 		frame.getContentPane().add(lastNameField);
 		lastNameField.setColumns(10);
 
  		JTextField usernameField = new JTextField();
 		usernameField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-		usernameField.setBounds(90, 482, 218, 38);
+		usernameField.setBounds(431, 449, 218, 38);
 		frame.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
 
  		JButton createBtn = new JButton("Create Account");
 		createBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		createBtn.setBounds(270, 643, 218, 48);
+		createBtn.setBounds(267, 637, 218, 48);
 		frame.getContentPane().add(createBtn);
 		
 		JLabel firstLabel = new JLabel("First Name");
 		firstLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		firstLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		firstLabel.setBounds(381, 328, 294, 42);
+		firstLabel.setBounds(49, 304, 294, 42);
 		frame.getContentPane().add(firstLabel);
 		
 		JLabel lastLabel = new JLabel("Last Name");
 		lastLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lastLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		lastLabel.setBounds(381, 397, 294, 42);
+		lastLabel.setBounds(49, 372, 294, 42);
 		frame.getContentPane().add(lastLabel);
 		
 		JTextField passwordField = new JTextField();
 		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		passwordField.setColumns(10);
-		passwordField.setBounds(90, 552, 218, 38);
+		passwordField.setBounds(431, 514, 218, 38);
 		frame.getContentPane().add(passwordField);
 		
 		JLabel usernameLabel = new JLabel("Username");
 		usernameLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		usernameLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		usernameLabel.setBounds(381, 482, 294, 42);
+		usernameLabel.setBounds(49, 443, 294, 42);
 		frame.getContentPane().add(usernameLabel);
 		
 		JLabel passwordLabel = new JLabel("Password");
 		passwordLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		passwordLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		passwordLabel.setBounds(381, 548, 294, 42);
+		passwordLabel.setBounds(49, 508, 294, 42);
 		frame.getContentPane().add(passwordLabel);
  	}
 }
