@@ -52,7 +52,7 @@ import java.awt.event.*;
 		lastLabel.setBounds(49, 372, 294, 42);
 		frame.getContentPane().add(lastLabel);
 		
-		JTextField passwordField = new JTextField();
+		JPasswordField passwordField = new JPasswordField();
 		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		passwordField.setColumns(10);
 		passwordField.setBounds(431, 514, 218, 38);
@@ -84,7 +84,7 @@ import java.awt.event.*;
 		createBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String user = usernameField.getText();
-                String pwd = passwordField.getText();
+                String pwd = String.valueOf(passwordField.getPassword());
                 String fname = firstNameField.getText();
                 String lname = lastNameField.getText();
                 boolean created = client.createAcc(user, pwd, fname, lname);

@@ -6,7 +6,7 @@ import java.awt.event.*;
 
     private JFrame frame;
     private JTextField userTextField;
-    private JTextField pswdTextField;
+    private JPasswordField pswdTextField;
     private JLabel userLabel;
     private JLabel pswdLabel;
     private JButton newAcctBtn;
@@ -53,7 +53,7 @@ import java.awt.event.*;
         frame.getContentPane().add(userTextField);
         userTextField.setColumns(10);
         
-        pswdTextField = new JTextField();
+        pswdTextField = new JPasswordField();
         pswdTextField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
         pswdTextField.setBounds(457, 42, 218, 33);
         frame.getContentPane().add(pswdTextField);
@@ -96,7 +96,7 @@ import java.awt.event.*;
         connectBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String user = userTextField.getText();
-                String pwd = pswdTextField.getText();
+                String pwd = String.valueOf(pswdTextField.getPassword());
                 String ip = ipTextField.getText();
                 client = new BankClient(ip);
                 boolean verified = client.verifyUser(user, pwd);
