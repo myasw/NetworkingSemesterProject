@@ -6,9 +6,7 @@ import java.net.*;
 // ClientHandler class 
 class ClientHandler extends Thread  
 { 
-    DateFormat fordate = new SimpleDateFormat("yyyy/MM/dd"); 
-    DateFormat fortime = new SimpleDateFormat("hh:mm:ss"); 
-    final DataInputStream dis; 
+    final DataInputStream dis;
     final DataOutputStream dos; 
     final Socket s; 
     
@@ -24,44 +22,26 @@ class ClientHandler extends Thread
     public void run()  
     { 
         String received; 
-        String toreturn; 
+        String toreturn;
+        String cmd, data;
         while (true)  
         { 
-            try { 
-  
-                // Ask user what he wants 
-                dos.writeUTF("What do you want?[Date | Time]..\n"+ 
-                            "Type Exit to terminate connection."); 
-                  
-                // receive the answer from client 
-                received = dis.readUTF(); 
-                  
-                if(received.equals("Exit")) 
-                {  
-                    System.out.println("Client " + this.s + " sends exit..."); 
-                    System.out.println("Closing this connection."); 
-                    this.s.close(); 
-                    System.out.println("Connection closed"); 
-                    break; 
-                } 
-                  
-                // creating Date object 
-                Date date = new Date(); 
-                  
-                // write on output stream based on the 
-                // answer from the client 
-                switch (received) { 
-                  
-                    case "Date" : 
-                        toreturn = fordate.format(date); 
-                        dos.writeUTF(toreturn); 
+            try {                  
+                // receive message from client 
+                received = dis.readUTF();
+                System.out.println(received);
+                
+                //First 3 characters set command
+                cmd = received.substring(0,3);
+                data = received.substring(3,received.length());
+                //React to client
+                switch (cmd) { 
+                    case "00:":
+                        dos.writeUTF(hasAccount(data));
+                        break;
+                    case "99:":
+                        this.s.close(); 
                         break; 
-                          
-                    case "Time" : 
-                        toreturn = fortime.format(date); 
-                        dos.writeUTF(toreturn); 
-                        break; 
-                          
                     default: 
                         dos.writeUTF("Invalid input"); 
                         break; 
@@ -70,15 +50,21 @@ class ClientHandler extends Thread
                 e.printStackTrace(); 
             } 
         } 
-          
-        try
-        { 
-            // closing resources 
-            this.dis.close(); 
-            this.dos.close(); 
-              
-        }catch(IOException e){ 
-            e.printStackTrace(); 
-        } 
-    } 
+    }
+    
+    public String hasAccount(String data)
+    {
+        BufferedReader br = null;
+        String ret = "false";
+        try{
+            br = new BufferedReader(new FileReader("users.txt"));
+            String line = br.readLine();  
+            while (line != null)  
+            {  
+                if(line.equals(data)) {ret = "true";}  
+                line = br.readLine();  
+            } 
+        } catch(IOException e) {e.printStackTrace();}
+        return ret;
+    }
 } 

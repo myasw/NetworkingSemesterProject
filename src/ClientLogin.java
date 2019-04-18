@@ -12,6 +12,7 @@ import java.awt.event.*;
     private JButton newAcctBtn;
     private JButton connectBtn;
     private JTextField ipTextField;
+    BankClient client;
 
     /**
      * Launch the application.
@@ -72,14 +73,23 @@ import java.awt.event.*;
         
         connectBtn = new JButton("Connect");
         connectBtn.setFont(new Font("Times New Roman", Font.BOLD, 18));
-        connectBtn.setBounds(90, 139, 218, 38);
+        connectBtn.setBounds(90, 102, 218, 38);
         frame.getContentPane().add(connectBtn);
         connectBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                //ATTEMPT CONNECTION WITH USERNAME AND PASSWORD
-                //IF CONNECTION SUCCESSFUL, CHOOSE CLIENT VERSION
-                ClientVersion cv = new ClientVersion();
+                String user = userTextField.getText();
+                String pwd = pswdTextField.getText();
+                String ip = ipTextField.getText();
+                client = new BankClient(ip);
+                boolean verified = client.verifyUser(user, pwd);
+                if(verified) {
+                    ClientVersion cv = new ClientVersion();
+                }
+                else
+                {
+                    System.out.println("Error.");
+                }
           }
         });
 
@@ -87,6 +97,13 @@ import java.awt.event.*;
         newAcctBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
         newAcctBtn.setBounds(281, 242, 218, 38);
         frame.getContentPane().add(newAcctBtn);
+        newAcctBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                //CONNECT TO SERVER AND CREATE ACCOUNT
+                AccountCreation ac = new AccountCreation();
+          }
+        });
         
         JLabel ipLabel = new JLabel("IP Address of Server");
         ipLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -99,12 +116,5 @@ import java.awt.event.*;
         ipTextField.setColumns(10);
         ipTextField.setBounds(457, 144, 218, 33);
         frame.getContentPane().add(ipTextField);
-        newAcctBtn.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                //CONNECT TO SERVER AND CREATE ACCOUNT
-                AccountCreation ac = new AccountCreation();
-          }
-        });
     }
 }
