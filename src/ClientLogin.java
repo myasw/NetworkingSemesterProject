@@ -116,5 +116,11 @@ import java.awt.event.*;
         ipTextField.setColumns(10);
         ipTextField.setBounds(457, 144, 218, 33);
         frame.getContentPane().add(ipTextField);
+        
+        JLabel errText = new JLabel("");
+		errText.setHorizontalAlignment(SwingConstants.CENTER);
+		errText.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		errText.setBounds(144, 356, 501, 58);
+		frame.getContentPane().add(errText);
     }
 }
