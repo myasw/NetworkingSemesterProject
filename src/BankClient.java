@@ -30,10 +30,35 @@ public class BankClient
         { 
             // obtaining input and out streams 
             DataInputStream dis = new DataInputStream(s.getInputStream()); 
-            DataOutputStream dos = new DataOutputStream(s.getOutputStream()); 
-
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+            
+            //Send username and password to server with command 00
             String tosend = "00:" + user + "|" + pwd; 
             dos.writeUTF(tosend);
+            
+            //Receive status of user
+            received = dis.readUTF();
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+        }
+        if(received.equals("true")){return true;}
+        else {return false;}
+    }
+    
+    public boolean createAcc(String user, String pwd, String fname, String lname)
+    {
+        String received = "";
+        try
+        { 
+            // obtaining input and out streams 
+            DataInputStream dis = new DataInputStream(s.getInputStream()); 
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+            
+            //Send new account info to server with command 01
+            String tosend = "01:" + user + "|" + pwd + "|" + fname + "|" + lname; 
+            dos.writeUTF(tosend);
+            
+            //Receive status of user
             received = dis.readUTF();
         }catch(Exception e){ 
             e.printStackTrace(); 

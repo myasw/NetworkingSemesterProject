@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
  public class ClientATM {
- 	public ClientATM()
+ 	public ClientATM(BankClient client)
  	{
  	    JFrame frame = new JFrame("ATM Banking GUI");
 		frame.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 14));
@@ -22,6 +22,13 @@ import java.awt.event.*;
 		disconnectBtn.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		disconnectBtn.setBounds(457, 100, 218, 42);
 		frame.getContentPane().add(disconnectBtn);
+		disconnectBtn.addActionListener(new ActionListener() 
+        { 
+            public void actionPerformed(ActionEvent e) { 
+                frame.dispose();
+                ClientLogin c = new ClientLogin();
+            }
+        });
 		
 		JTextField balanceField = new JTextField();
 		balanceField.setFont(new Font("Times New Roman", Font.PLAIN, 20));

@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
  public class AccountCreation {
-	public AccountCreation(){
+	public AccountCreation(BankClient client){
 		JFrame frame = new JFrame("Create an Account");
 		frame.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 14));
 		frame.setBounds(0, 0, 800, 800);
@@ -39,11 +39,6 @@ import java.awt.event.*;
 		usernameField.setBounds(431, 449, 218, 38);
 		frame.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
-
- 		JButton createBtn = new JButton("Create Account");
-		createBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		createBtn.setBounds(267, 637, 218, 48);
-		frame.getContentPane().add(createBtn);
 		
 		JLabel firstLabel = new JLabel("First Name");
 		firstLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -74,5 +69,35 @@ import java.awt.event.*;
 		passwordLabel.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		passwordLabel.setBounds(49, 508, 294, 42);
 		frame.getContentPane().add(passwordLabel);
+		
+		JLabel errText = new JLabel("");
+		errText.setHorizontalAlignment(SwingConstants.CENTER);
+		errText.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		errText.setForeground(Color.RED);
+		errText.setBounds(0, 550, 501, 58);
+		frame.getContentPane().add(errText);
+		
+		JButton createBtn = new JButton("Create Account");
+		createBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		createBtn.setBounds(267, 637, 218, 48);
+		frame.getContentPane().add(createBtn);
+		createBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String user = usernameField.getText();
+                String pwd = passwordField.getText();
+                String fname = firstNameField.getText();
+                String lname = lastNameField.getText();
+                boolean created = client.createAcc(user, pwd, fname, lname);
+                
+                if(created) {
+                    frame.dispose();
+                    ClientVersion cv = new ClientVersion(client);
+                }
+                else
+                {
+                    errText.setText("That username is taken.");
+                }
+          }
+        });
  	}
 }

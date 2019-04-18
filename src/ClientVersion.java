@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class ClientVersion {
-    public ClientVersion()
+    public ClientVersion(BankClient client)
     {
         JFrame f = new JFrame("Choose a version");
         f.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 14));
@@ -26,7 +26,7 @@ public class ClientVersion {
         { 
             public void actionPerformed(ActionEvent e) { 
                 f.dispose();
-                ClientMobile mobile = new ClientMobile();
+                ClientMobile mobile = new ClientMobile(client);
             }
         });
                 
@@ -38,7 +38,7 @@ public class ClientVersion {
         { 
             public void actionPerformed(ActionEvent e) { 
                 f.dispose();
-                ClientATM atm = new ClientATM();
+                ClientATM atm = new ClientATM(client);
             }
         });
     }

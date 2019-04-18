@@ -62,14 +62,32 @@ import java.awt.event.*;
         userLabel = new JLabel("Username");
         userLabel.setHorizontalAlignment(SwingConstants.CENTER);
         userLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        userLabel.setBounds(90, 15, 218, 15);
+        userLabel.setBounds(90, 15, 218, 33);
         frame.getContentPane().add(userLabel);
         
         pswdLabel = new JLabel("Password");
         pswdLabel.setHorizontalAlignment(SwingConstants.CENTER);
         pswdLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        pswdLabel.setBounds(457, 12, 218, 21);
+        pswdLabel.setBounds(457, 12, 218, 33);
         frame.getContentPane().add(pswdLabel);
+        
+        JLabel ipLabel = new JLabel("IP Address of Server");
+        ipLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        ipLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
+        ipLabel.setBounds(457, 117, 218, 33);
+        frame.getContentPane().add(ipLabel);
+        
+        ipTextField = new JTextField();
+        ipTextField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        ipTextField.setColumns(10);
+        ipTextField.setBounds(457, 144, 218, 33);
+        frame.getContentPane().add(ipTextField);
+        
+        JLabel errText = new JLabel("");
+		errText.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		errText.setForeground(Color.RED);
+		errText.setBounds(90, 125, 501, 58);
+		frame.getContentPane().add(errText);
         
         connectBtn = new JButton("Connect");
         connectBtn.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -77,18 +95,19 @@ import java.awt.event.*;
         frame.getContentPane().add(connectBtn);
         connectBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
                 String user = userTextField.getText();
                 String pwd = pswdTextField.getText();
                 String ip = ipTextField.getText();
                 client = new BankClient(ip);
                 boolean verified = client.verifyUser(user, pwd);
                 if(verified) {
-                    ClientVersion cv = new ClientVersion();
+                    frame.dispose();
+                    ClientVersion cv = new ClientVersion(client);
                 }
                 else
                 {
-                    System.out.println("Error.");
+                    errText.setText("Username or password is incorrect.");
+                    client = null;
                 }
           }
         });
@@ -100,27 +119,10 @@ import java.awt.event.*;
         newAcctBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                //CONNECT TO SERVER AND CREATE ACCOUNT
-                AccountCreation ac = new AccountCreation();
+                String ip = ipTextField.getText();
+                client = new BankClient(ip);
+                AccountCreation ac = new AccountCreation(client);
           }
         });
-        
-        JLabel ipLabel = new JLabel("IP Address of Server");
-        ipLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        ipLabel.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        ipLabel.setBounds(457, 117, 218, 15);
-        frame.getContentPane().add(ipLabel);
-        
-        ipTextField = new JTextField();
-        ipTextField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
-        ipTextField.setColumns(10);
-        ipTextField.setBounds(457, 144, 218, 33);
-        frame.getContentPane().add(ipTextField);
-        
-        JLabel errText = new JLabel("");
-		errText.setHorizontalAlignment(SwingConstants.CENTER);
-		errText.setFont(new Font("Times New Roman", Font.BOLD, 30));
-		errText.setBounds(144, 356, 501, 58);
-		frame.getContentPane().add(errText);
     }
 }
