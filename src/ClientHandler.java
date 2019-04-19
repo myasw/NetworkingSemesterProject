@@ -24,7 +24,8 @@ class ClientHandler extends Thread
         String received; 
         String toreturn;
         String cmd, data;
-        while (true)  
+        boolean done = false;
+        while (!done)  
         { 
             try {                  
                 // receive message from client 
@@ -53,9 +54,10 @@ class ClientHandler extends Thread
                     	break;
                     case "99:":
                         this.s.close();
+                        done = true;
                         break; 
                 } 
-            } catch (IOException e) { 
+            } catch (IOException e) {
                 e.printStackTrace();
                 break;
             } 

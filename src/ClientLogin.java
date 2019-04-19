@@ -107,7 +107,7 @@ import java.awt.event.*;
                 else
                 {
                     errText.setText("Username or password is incorrect.");
-                    client = null;
+                    client.endConnection();
                 }
           }
         });

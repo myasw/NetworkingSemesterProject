@@ -34,6 +34,7 @@ import java.awt.event.*;
         { 
             public void actionPerformed(ActionEvent e) { 
                 frame.dispose();
+                client.endConnection();
                 ClientLogin c = new ClientLogin();
             }
         });
@@ -104,5 +105,13 @@ import java.awt.event.*;
 			}
 	
 		});
+		
+		frame.addWindowListener(new java.awt.event.WindowAdapter() {
+        @Override
+        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                client.endConnection();
+                System.exit(0);
+            }
+        });
  	}
 }

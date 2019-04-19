@@ -131,4 +131,20 @@ public class BankClient
         }
         return received;
     }
+    
+    public void endConnection()
+    {
+        try
+        { 
+            // obtaining input and out streams 
+            DataInputStream dis = new DataInputStream(s.getInputStream()); 
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+            
+            //Use username to gather all user data
+            String tosend = "99:"; 
+            dos.writeUTF(tosend);
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+        }
+    }
 } 

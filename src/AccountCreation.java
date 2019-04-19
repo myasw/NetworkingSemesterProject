@@ -21,6 +21,14 @@ import java.awt.event.*;
 		exitBtn.setFont(new Font("Times New Roman", Font.BOLD, 18));
 		exitBtn.setBounds(457, 100, 218, 42);
 		frame.getContentPane().add(exitBtn);
+		exitBtn.addActionListener(new ActionListener() 
+        { 
+            public void actionPerformed(ActionEvent e) { 
+                frame.dispose();
+                client.endConnection();
+                ClientLogin c = new ClientLogin();
+            }
+        });
 
  		JTextField firstNameField = new JTextField();
 		firstNameField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
@@ -98,6 +106,14 @@ import java.awt.event.*;
                     errText.setText("That username is taken.");
                 }
           }
+        });
+        
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+        @Override
+        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                client.endConnection();
+                System.exit(0);
+            }
         });
  	}
 }

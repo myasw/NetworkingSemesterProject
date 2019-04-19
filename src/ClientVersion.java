@@ -41,5 +41,13 @@ public class ClientVersion {
                 ClientATM atm = new ClientATM(client, user);
             }
         });
+        
+        f.addWindowListener(new java.awt.event.WindowAdapter() {
+        @Override
+        public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                client.endConnection();
+                System.exit(0);
+            }
+        });
     }
 }

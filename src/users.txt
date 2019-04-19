@@ -1,2 +1,3 @@
 temp|pwd|John|Snow|0.00|0.00|725|acceptable
 myasw|issapasswd|Matt|Yaswinski|0.00|0.00|658|acceptable
+josh|exists|Joshua|Del Toro|0.00|0.00|794|acceptable
