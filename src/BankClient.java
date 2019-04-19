@@ -57,7 +57,7 @@ public class BankClient
             DataOutputStream dos = new DataOutputStream(s.getOutputStream());
             
             //Send new account info to server with command 01
-            String tosend = "01:" + user + "|" + pwd + "|" + fname + "|" + lname + "|0|0|" + Integer.toString((rand.nextInt(201) + 600)) + "|" + "acceptable"; 
+            String tosend = "01:" + user + "|" + pwd + "|" + fname + "|" + lname + "|0.00|0.00|" + Integer.toString((rand.nextInt(201) + 600)) + "|" + "acceptable"; 
             dos.writeUTF(tosend);
             
             //Receive status of user
