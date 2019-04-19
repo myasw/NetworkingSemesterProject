@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 
  public class ClientATM {
- 	public ClientATM(BankClient client)
+ 	public ClientATM(BankClient client, String user)
  	{
  	    JFrame frame = new JFrame("ATM Banking GUI");
 		frame.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 14));
@@ -12,11 +12,19 @@ import java.awt.event.*;
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 		
- 	    JLabel iDFText = new JLabel("Hello...\nWhat would you like to do?");
+ 	    String name = client.getName(user);
+		
+ 	    JLabel iDFText = new JLabel("Hello " + name + ".");
 		iDFText.setHorizontalAlignment(SwingConstants.CENTER);
 		iDFText.setFont(new Font("Times New Roman", Font.BOLD, 30));
 		iDFText.setBounds(148, 152, 501, 58);
 		frame.getContentPane().add(iDFText);
+		
+		JLabel iDFText2 = new JLabel("What would you like to do?");
+		iDFText2.setHorizontalAlignment(SwingConstants.CENTER);
+		iDFText2.setFont(new Font("Times New Roman", Font.BOLD, 30));
+		iDFText2.setBounds(148, 220, 501, 58);
+		frame.getContentPane().add(iDFText2);
 		
 		JButton disconnectBtn = new JButton("Disconnect");
 		disconnectBtn.setFont(new Font("Times New Roman", Font.BOLD, 18));

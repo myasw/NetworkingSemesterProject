@@ -102,7 +102,7 @@ import java.awt.event.*;
                 boolean verified = client.verifyUser(user, pwd);
                 if(verified) {
                     frame.dispose();
-                    ClientVersion cv = new ClientVersion(client);
+                    ClientVersion cv = new ClientVersion(client, user);
                 }
                 else
                 {

@@ -91,7 +91,7 @@ import java.awt.event.*;
                 
                 if(created) {
                     frame.dispose();
-                    ClientVersion cv = new ClientVersion(client);
+                    ClientVersion cv = new ClientVersion(client, user);
                 }
                 else
                 {
