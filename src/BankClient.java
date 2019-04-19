@@ -48,6 +48,8 @@ public class BankClient
     public boolean createAcc(String user, String pwd, String fname, String lname)
     {
         String received = "";
+        Random rand = new Random();
+        
         try
         { 
             // obtaining input and out streams 
@@ -55,7 +57,7 @@ public class BankClient
             DataOutputStream dos = new DataOutputStream(s.getOutputStream());
             
             //Send new account info to server with command 01
-            String tosend = "01:" + user + "|" + pwd + "|" + fname + "|" + lname; 
+            String tosend = "01:" + user + "|" + pwd + "|" + fname + "|" + lname + "|0|0|" + Integer.toString((rand.nextInt(201) + 600)) + "|" + "acceptable"; 
             dos.writeUTF(tosend);
             
             //Receive status of user

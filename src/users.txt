@@ -3,3 +3,5 @@ josh|exists|Josh|Del Toro|0|0|726|acceptable
 mburke|password|Madison|Burke|0|0|775|acceptable
 myasw|issapasswd|Matt|Yaswinski|0|0|602|acceptable
 pmonohan|patm|Pat|Monohan|0|0|698|acceptable
+therussian|motherrussia|Nikolay|Atanassov|0|0|665|acceptable
+dragonlady|gameofthrones|Emilia|Clarke|0|0|637|acceptable
