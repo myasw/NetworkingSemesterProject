@@ -1,9 +1,2 @@
-temp|pwd|John|Snow|0.00|0.00|800|acceptable
-josh|exists|Josh|Del Toro|0.00|0.00|726|acceptable
-mburke|password|Madison|Burke|0.00|0.00|775|acceptable
-myasw|issapasswd|Matt|Yaswinski|0.00|0.00|602|acceptable
-pmonohan|patm|Pat|Monohan|0.00|0.00|698|acceptable
-therussian|motherrussia|Nikolay|Atanassov|0.00|0.00|665|acceptable
-dragonlady|gameofthrones|Emilia|Clarke|0.00|0.00|637|acceptable
-
-person1|password|Mister|Person|0.00|0.00|746|acceptable
+temp|pwd|John|Snow|0.00|0.00|725|acceptable
+myasw|issapasswd|Matt|Yaswinski|0.00|0.00|658|acceptable

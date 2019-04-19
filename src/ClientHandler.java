@@ -136,7 +136,6 @@ class ClientHandler extends Thread
             if(ret.equals("true"))
             {
                 bw = new BufferedWriter(new FileWriter("users.txt", true));
-                bw.newLine();
                 bw.write(data);
                 bw.close();
             }
