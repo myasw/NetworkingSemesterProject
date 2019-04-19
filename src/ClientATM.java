@@ -87,5 +87,17 @@ import java.awt.event.*;
 
  		radioPanel2.add(checkingBtn2);
 		radioPanel2.add(savingsBtn2);
+		
+		balanceBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				if (checkingBtn2.isSelected())
+					balanceField.setText("$" + client.getCheckingBalance(user));
+				else if (savingsBtn2.isSelected())
+					balanceField.setText("$" + client.getSavingsBalance(user));
+			}
+	
+		});
  	}
 }

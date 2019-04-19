@@ -48,6 +48,9 @@ class ClientHandler extends Thread
                     case "03:":
                     	dos.writeUTF(getCheckingBalance(data));
                     	break;
+                    case "04:":
+                    	dos.writeUTF(getSavingsBalance(data));
+                    	break;
                     case "99:":
                         this.s.close();
                         break; 
@@ -99,6 +102,27 @@ class ClientHandler extends Thread
             br.close();
         } catch(IOException e) {e.printStackTrace();}
         return checkingBalance;
+    }
+    
+    public String getSavingsBalance(String data)
+    {
+        BufferedReader br = null;
+        String user = "";
+        String savingsBalance = "";
+        try{
+            br = new BufferedReader(new FileReader("users.txt"));
+            String line = br.readLine();
+            ArrayList<String> userData;
+            while (line != null)  
+            {
+                userData = viewUser(line);
+                user = userData.get(0);
+                if(user.equals(data)) {savingsBalance = userData.get(5);} 
+                line = br.readLine();  
+            }
+            br.close();
+        } catch(IOException e) {e.printStackTrace();}
+        return savingsBalance;
     }
     
     public ArrayList<String> viewUser(String line)

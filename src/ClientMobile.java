@@ -99,6 +99,8 @@ import java.awt.event.*;
 			{
 				if (checkingBtn2.isSelected())
 					balanceField.setText("$" + client.getCheckingBalance(user));
+				else if (savingsBtn2.isSelected())
+					balanceField.setText("$" + client.getSavingsBalance(user));
 			}
 	
 		});
