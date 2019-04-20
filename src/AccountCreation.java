@@ -82,7 +82,8 @@ import java.awt.event.*;
 		errText.setHorizontalAlignment(SwingConstants.CENTER);
 		errText.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		errText.setForeground(Color.RED);
-		errText.setBounds(0, 550, 501, 58);
+		errText.setBounds(12, 550, 773, 58);
+		errText.setText(" ");
 		frame.getContentPane().add(errText);
 		
 		JButton createBtn = new JButton("Create Account");
@@ -95,7 +96,10 @@ import java.awt.event.*;
                 String pwd = String.valueOf(passwordField.getPassword());
                 String fname = firstNameField.getText();
                 String lname = lastNameField.getText();
-                boolean created = client.createAcc(user, pwd, fname, lname);
+                boolean created = false;
+                if (user == "" || pwd == "" || fname == "" || lname == "") {
+                	created = client.createAcc(user, pwd, fname, lname);
+                }
                 
                 if(created) {
                     frame.dispose();
@@ -103,7 +107,7 @@ import java.awt.event.*;
                 }
                 else
                 {
-                    errText.setText("That username is taken.");
+                    errText.setText("You must enter an untaken username and enter text for each field");
                 }
           }
         });
