@@ -125,6 +125,7 @@ import java.awt.event.*;
 		{
 			public void actionPerformed(ActionEvent e) {
 				String depValue = depositField.getText();
+				depValue = depValue.replaceAll("[^\\d.]", "");
 				if (checkingBtn2.isSelected()) {
 					client.addToChecking(user, depValue);
 					errLabel.setText("");
@@ -142,6 +143,7 @@ import java.awt.event.*;
 		{
         	public void actionPerformed(ActionEvent e) {
         		String withValue = withdrawField.getText();
+        		withValue = withValue.replaceAll("[^\\d.]", "");
         		if (checkingBtn2.isSelected()) {
         			if (Double.parseDouble(client.getCheckingBalance(user)) < Double.parseDouble(withValue)) {
         				errLabel.setText("Cannot withdraw more");

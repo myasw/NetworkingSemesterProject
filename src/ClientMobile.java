@@ -131,6 +131,7 @@ import java.awt.event.*;
 			public void actionPerformed(ActionEvent e)
 			{
 				String tranValue = transferField.getText();
+				tranValue = tranValue.replaceAll("[^\\d.]", "");
 				if (checkingBtn2.isSelected()) {
 					if (Double.parseDouble(client.getSavingsBalance(user)) < Double.parseDouble(tranValue)) {
         				errLabel.setText("Cannot withdraw more");
