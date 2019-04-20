@@ -174,6 +174,48 @@ public class BankClient
         return received;
     }
     
+    public String removeFromChecking(String user, String data)
+    {
+        String received = "";
+        try
+        { 
+            // obtaining input and out streams 
+            DataInputStream dis = new DataInputStream(s.getInputStream()); 
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+            
+            //Use username to gather all user data
+            String tosend = "07:" + user + "|" + data; 
+            dos.writeUTF(tosend);
+            
+            //Receive status of user
+            received = dis.readUTF();
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+        }
+        return received;
+    }
+    
+    public String removeFromSavings(String user, String data)
+    {
+        String received = "";
+        try
+        { 
+            // obtaining input and out streams 
+            DataInputStream dis = new DataInputStream(s.getInputStream()); 
+            DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+            
+            //Use username to gather all user data
+            String tosend = "08:" + user + "|" + data; 
+            dos.writeUTF(tosend);
+            
+            //Receive status of user
+            received = dis.readUTF();
+        }catch(Exception e){ 
+            e.printStackTrace(); 
+        }
+        return received;
+    }
+    
     public void endConnection()
     {
         try

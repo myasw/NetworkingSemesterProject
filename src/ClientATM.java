@@ -146,11 +146,19 @@ import java.awt.event.*;
         			if (Double.parseDouble(client.getCheckingBalance(user)) < Double.parseDouble(withValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
+        			} else {
+        				client.removeFromChecking(user, withValue);
+        				errLabel.setText("");
+    					errLabel2.setText("");
         			}
         		} else if (savingsBtn2.isSelected()) {
         			if (Double.parseDouble(client.getSavingsBalance(user)) < Double.parseDouble(withValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
+        			} else {
+        				client.removeFromSavings(user, withValue);
+        				errLabel.setText("");
+    					errLabel2.setText("");
         			}
         		}
         	}
