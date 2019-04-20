@@ -143,7 +143,6 @@ public class BankClient
             
             //Use username to gather all user data
             String tosend = "05:" + user + "|" + data; 
-            System.out.println(tosend);
             dos.writeUTF(tosend);
             
             //Receive status of user
