@@ -89,6 +89,20 @@ import java.awt.event.*;
         radioPanel2.add(checkingBtn2);
         radioPanel2.add(savingsBtn2);
         
+        JLabel errLabel = new JLabel("");
+        errLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        errLabel.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        errLabel.setForeground(Color.RED);
+        errLabel.setBounds(90, 435, 218, 39);
+        frame.getContentPane().add(errLabel);
+        
+        JLabel errLabel2 = new JLabel("");
+        errLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+        errLabel2.setForeground(Color.RED);
+        errLabel2.setFont(new Font("Times New Roman", Font.PLAIN, 20));
+        errLabel2.setBounds(90, 472, 218, 39);
+        frame.getContentPane().add(errLabel2);
+        
         balanceBtn.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -111,6 +125,19 @@ import java.awt.event.*;
 					client.addToSavings(user, depValue);
 				}
 			}
+		});
+        
+        withdrawBtn.addActionListener(new ActionListener()
+		{
+        	public void actionPerformed(ActionEvent e) {
+        		String withValue = withdrawField.getText();
+        		if (checkingBtn2.isSelected()) {
+        			if (Double.parseDouble(client.getCheckingBalance(user)) < Double.parseDouble(withValue)) {
+        				errLabel.setText("Cannot withdraw more");
+        				errLabel2.setText("than in account");
+        			}
+        		}
+        	}
 		});
         
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
