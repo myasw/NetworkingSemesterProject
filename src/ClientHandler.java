@@ -254,12 +254,12 @@ class ClientHandler extends Thread
             	
             	line = br.readLine();
             }
-            oldLine = oldLine.replace('|', ' ');
-            newLine = newLine.replace('|', ' ');
+            oldLine = oldLine.replace('|', '@');
+            newLine = newLine.replace('|', '@');
             
-            oldInfo = oldInfo.replace('|', ' ');
+            oldInfo = oldInfo.replace('|', '@');
             newInfo = oldInfo.replaceAll(oldLine, newLine);
-            newInfo = newInfo.replace(' ', '|');
+            newInfo = newInfo.replace('@', '|');
             
             FileWriter writer = new FileWriter("users.txt");
             writer.write(newInfo);
@@ -317,12 +317,12 @@ class ClientHandler extends Thread
             	
             	line = br.readLine();
             }
-            oldLine = oldLine.replace('|', ' ');
-            newLine = newLine.replace('|', ' ');
+            oldLine = oldLine.replace('|', '@');
+            newLine = newLine.replace('|', '@');
             
-            oldInfo = oldInfo.replace('|', ' ');
+            oldInfo = oldInfo.replace('|', '@');
             newInfo = oldInfo.replaceAll(oldLine, newLine);
-            newInfo = newInfo.replace(' ', '|');
+            newInfo = newInfo.replace('@', '|');
             
             FileWriter writer = new FileWriter("users.txt");
             writer.write(newInfo);
@@ -380,12 +380,12 @@ class ClientHandler extends Thread
             	
             	line = br.readLine();
             }
-            oldLine = oldLine.replace('|', ' ');
-            newLine = newLine.replace('|', ' ');
+            oldLine = oldLine.replace('|', '@');
+            newLine = newLine.replace('|', '@');
             
-            oldInfo = oldInfo.replace('|', ' ');
+            oldInfo = oldInfo.replace('|', '@');
             newInfo = oldInfo.replaceAll(oldLine, newLine);
-            newInfo = newInfo.replace(' ', '|');
+            newInfo = newInfo.replace('@', '|');
             
             FileWriter writer = new FileWriter("users.txt");
             writer.write(newInfo);
@@ -443,12 +443,12 @@ class ClientHandler extends Thread
             	
             	line = br.readLine();
             }
-            oldLine = oldLine.replace('|', ' ');
-            newLine = newLine.replace('|', ' ');
+            oldLine = oldLine.replace('|', '@');
+            newLine = newLine.replace('|', '@');
             
-            oldInfo = oldInfo.replace('|', ' ');
+            oldInfo = oldInfo.replace('|', '@');
             newInfo = oldInfo.replaceAll(oldLine, newLine);
-            newInfo = newInfo.replace(' ', '|');
+            newInfo = newInfo.replace('@', '|');
             
             FileWriter writer = new FileWriter("users.txt");
             writer.write(newInfo);
