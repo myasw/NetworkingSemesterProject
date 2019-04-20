@@ -107,10 +107,16 @@ import java.awt.event.*;
         {
             public void actionPerformed(ActionEvent e)
             {
-                if (checkingBtn2.isSelected())
+                if (checkingBtn2.isSelected()) {
                     balanceField.setText("$" + client.getCheckingBalance(user));
-                else if (savingsBtn2.isSelected())
+                    errLabel.setText("");
+                    errLabel2.setText("");
+                }
+                else if (savingsBtn2.isSelected()) {
                     balanceField.setText("$" + client.getSavingsBalance(user));
+                    errLabel.setText("");
+                    errLabel2.setText("");
+                }
             }
     
         });
@@ -119,10 +125,15 @@ import java.awt.event.*;
 		{
 			public void actionPerformed(ActionEvent e) {
 				String depValue = depositField.getText();
-				if (checkingBtn2.isSelected())
+				if (checkingBtn2.isSelected()) {
 					client.addToChecking(user, depValue);
+					errLabel.setText("");
+					errLabel2.setText("");
+				}
 				else if (savingsBtn2.isSelected()) {
 					client.addToSavings(user, depValue);
+					errLabel.setText("");
+					errLabel2.setText("");
 				}
 			}
 		});
