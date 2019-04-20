@@ -132,7 +132,7 @@ import java.awt.event.*;
 			{
 				String tranValue = transferField.getText();
 				tranValue = tranValue.replaceAll("[^\\d.]", "");
-				if (checkingBtn2.isSelected()) {
+				if (checkingBtn2.isSelected() && !tranValue.equals("")) {
 					if (Double.parseDouble(client.getSavingsBalance(user)) < Double.parseDouble(tranValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
@@ -143,7 +143,7 @@ import java.awt.event.*;
     					errLabel2.setText("");
         			}
 				}
-				if (savingsBtn2.isSelected()) {
+				if (savingsBtn2.isSelected() && !tranValue.equals("")) {
 					if (Double.parseDouble(client.getCheckingBalance(user)) < Double.parseDouble(tranValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");

@@ -126,12 +126,12 @@ import java.awt.event.*;
 			public void actionPerformed(ActionEvent e) {
 				String depValue = depositField.getText();
 				depValue = depValue.replaceAll("[^\\d.]", "");
-				if (checkingBtn2.isSelected()) {
+				if (checkingBtn2.isSelected() && !depValue.equals("")) {
 					client.addToChecking(user, depValue);
 					errLabel.setText("");
 					errLabel2.setText("");
 				}
-				else if (savingsBtn2.isSelected()) {
+				else if (savingsBtn2.isSelected() && !depValue.equals("")) {
 					client.addToSavings(user, depValue);
 					errLabel.setText("");
 					errLabel2.setText("");
@@ -144,7 +144,7 @@ import java.awt.event.*;
         	public void actionPerformed(ActionEvent e) {
         		String withValue = withdrawField.getText();
         		withValue = withValue.replaceAll("[^\\d.]", "");
-        		if (checkingBtn2.isSelected()) {
+        		if (checkingBtn2.isSelected() && !withValue.equals("")) {
         			if (Double.parseDouble(client.getCheckingBalance(user)) < Double.parseDouble(withValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
@@ -153,7 +153,7 @@ import java.awt.event.*;
         				errLabel.setText("");
     					errLabel2.setText("");
         			}
-        		} else if (savingsBtn2.isSelected()) {
+        		} else if (savingsBtn2.isSelected() && !withValue.equals("")) {
         			if (Double.parseDouble(client.getSavingsBalance(user)) < Double.parseDouble(withValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
