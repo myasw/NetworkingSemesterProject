@@ -55,6 +55,9 @@ class ClientHandler extends Thread
                     case "05:":
                     	dos.writeUTF(addToChecking(data));
                     	break;
+                    case "06:":
+                    	dos.writeUTF(addToSavings(data));
+                    	break;
                     case "99:":
                         this.s.close();
                         done = true;
@@ -258,6 +261,69 @@ class ClientHandler extends Thread
             br.close();
         } catch(IOException e) {e.printStackTrace();}
         return checkingBalance;
+    }
+    
+    public String addToSavings(String data)
+    {
+    	BufferedReader br = null;
+        String user = "";
+        String savingsBalance = "";
+        double newSavings = 0;
+
+        String oldInfo = "";
+        String newInfo = "";
+        String oldLine = "";
+        String newLine = "";
+        String temp1 = "", temp2 = "";
+        try{
+            br = new BufferedReader(new FileReader("users.txt"));
+            String line = br.readLine();
+            ArrayList<String> userData;
+            temp1 = data.substring(0, data.indexOf("|"));
+            temp2 = data.substring(data.indexOf("|") + 1);
+            while (line != null)  
+            {
+            	oldInfo = oldInfo + line + "\n";
+                userData = viewUser(line);
+                user = userData.get(0);
+                if(user.equals(temp1)) {savingsBalance = userData.get(5);} 
+                line = br.readLine();  
+            }
+            br.close();
+            br = new BufferedReader(new FileReader("users.txt"));
+            line = br.readLine();
+            newSavings = Double.parseDouble(savingsBalance) + Double.parseDouble(temp2);
+            
+            while (line != null) {
+            	userData = viewUser(line);
+            	user = userData.get(0);
+            	String newStr = line.substring(line.indexOf("|") + 1);
+            	String newStr2 = "";
+            	if (user.equals(temp1)) {
+	            	for (int i = 0; i < 4; i++) {
+	            		newStr = newStr.substring(newStr.indexOf("|") + 1);
+	            	}
+	            	newStr2 = newStr.substring(newStr.indexOf("|"));
+	            	oldLine = line;
+	            	line = line.substring(0, line.indexOf(newStr)) + String.format("%.2f", newSavings) + newStr2;
+	            	newLine = line;
+            	}
+            	
+            	line = br.readLine();
+            }
+            oldLine = oldLine.replace('|', ' ');
+            newLine = newLine.replace('|', ' ');
+            
+            oldInfo = oldInfo.replace('|', ' ');
+            newInfo = oldInfo.replaceAll(oldLine, newLine);
+            newInfo = newInfo.replace(' ', '|');
+            
+            FileWriter writer = new FileWriter("users.txt");
+            writer.write(newInfo);
+            writer.close();
+            br.close();
+        } catch(IOException e) {e.printStackTrace();}
+        return savingsBalance;
     }
 
 } 

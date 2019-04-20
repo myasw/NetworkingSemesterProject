@@ -107,6 +107,9 @@ import java.awt.event.*;
 				String depValue = depositField.getText();
 				if (checkingBtn2.isSelected())
 					client.addToChecking(user, depValue);
+				else if (savingsBtn2.isSelected()) {
+					client.addToSavings(user, depValue);
+				}
 			}
 		});
         

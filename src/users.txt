@@ -1,3 +1,3 @@
 temp|pwd|John|Snow|42.24|0.00|612|acceptable
-myasw|issapasswd|Matt|Yaswinski|124.00|0.00|684|acceptable
+myasw|issapasswd|Matt|Yaswinski|210.00|40.00|684|acceptable
 josh|exists|Joshua|Del|Toro|0.00|0.00|784|acceptable
