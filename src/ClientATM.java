@@ -101,6 +101,15 @@ import java.awt.event.*;
     
         });
         
+        depositBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e) {
+				String depValue = depositField.getText();
+				if (checkingBtn2.isSelected())
+					client.addToChecking(user, depValue);
+			}
+		});
+        
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
         @Override
         public void windowClosing(java.awt.event.WindowEvent windowEvent) {
