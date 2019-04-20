@@ -147,6 +147,11 @@ import java.awt.event.*;
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
         			}
+        		} else if (savingsBtn2.isSelected()) {
+        			if (Double.parseDouble(client.getSavingsBalance(user)) < Double.parseDouble(withValue)) {
+        				errLabel.setText("Cannot withdraw more");
+        				errLabel2.setText("than in account");
+        			}
         		}
         	}
 		});
