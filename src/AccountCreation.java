@@ -33,18 +33,21 @@ import java.awt.event.*;
  		JTextField firstNameField = new JTextField();
 		firstNameField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		firstNameField.setBounds(430, 310, 218, 39);
+		firstNameField.setText("");
 		frame.getContentPane().add(firstNameField);
 		firstNameField.setColumns(10);
 
  		JTextField lastNameField = new JTextField();
 		lastNameField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		lastNameField.setBounds(431, 378, 218, 39);
+		lastNameField.setText("");
 		frame.getContentPane().add(lastNameField);
 		lastNameField.setColumns(10);
 
  		JTextField usernameField = new JTextField();
 		usernameField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		usernameField.setBounds(431, 449, 218, 38);
+		usernameField.setText("");
 		frame.getContentPane().add(usernameField);
 		usernameField.setColumns(10);
 		
@@ -64,6 +67,7 @@ import java.awt.event.*;
 		passwordField.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		passwordField.setColumns(10);
 		passwordField.setBounds(431, 514, 218, 38);
+		passwordField.setText("");
 		frame.getContentPane().add(passwordField);
 		
 		JLabel usernameLabel = new JLabel("Username");
@@ -97,7 +101,7 @@ import java.awt.event.*;
                 String fname = firstNameField.getText();
                 String lname = lastNameField.getText();
                 boolean created = false;
-                if (user == "" || pwd == "" || fname == "" || lname == "") {
+                if (!user.equals("") || !pwd.equals("") || !fname.equals("") || !lname.equals("")) {
                 	created = client.createAcc(user, pwd, fname, lname);
                 }
                 
