@@ -122,61 +122,75 @@ import java.awt.event.*;
         });
         
         depositBtn.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e) {
-				String depValue = depositField.getText();
-				depValue = depValue.replaceAll("[^\\d.]", "");
-				if (checkingBtn2.isSelected() && !depValue.equals("") && depValue.matches("^[0-9]*\\.?[0-9]*$") && depValue.matches(".*[0-9].*")) {
-					client.changeData(user, depValue, "05");
-					errLabel.setText("");
-					errLabel2.setText("");
-				}
-				else if (savingsBtn2.isSelected() && !depValue.equals("") && depValue.matches("^[0-9]*\\.?[0-9]*$") && depValue.matches(".*[0-9].*")) {
-					client.changeData(user, depValue, "06");
-					errLabel.setText("");
-					errLabel2.setText("");
-				} else if (!depValue.matches("^[0-9]*\\.?[0-9]*$")) {
-					errLabel.setText("Invalid input:");
-        			errLabel2.setText("too many decimal points");
-				} else if (!depValue.matches(".*[0-9].*")) {
-					errLabel.setText("Invalid input:");
-        			errLabel2.setText("not enough digits");
-				}
-			}
-		});
+        {
+            public void actionPerformed(ActionEvent e) {
+                if(client.isFrozen(user)) {
+                    errLabel.setText("Cannot alter balance");
+                    errLabel2.setText("while frozen.");
+                }
+                else
+                {
+                    String depValue = depositField.getText();
+                    depValue = depValue.replaceAll("[^\\d.]", "");
+                    if (checkingBtn2.isSelected() && !depValue.equals("") && depValue.matches("^[0-9]*\\.?[0-9]*$") && depValue.matches(".*[0-9].*")) {
+                        client.changeData(user, depValue, "05");
+                        errLabel.setText("");
+                        errLabel2.setText("");
+                    }
+                    else if (savingsBtn2.isSelected() && !depValue.equals("") && depValue.matches("^[0-9]*\\.?[0-9]*$") && depValue.matches(".*[0-9].*")) {
+                        client.changeData(user, depValue, "06");
+                        errLabel.setText("");
+                        errLabel2.setText("");
+                    } else if (!depValue.matches("^[0-9]*\\.?[0-9]*$")) {
+                        errLabel.setText("Invalid input:");
+                        errLabel2.setText("too many decimal points");
+                    } else if (!depValue.matches(".*[0-9].*")) {
+                        errLabel.setText("Invalid input:");
+                        errLabel2.setText("not enough digits");
+                    }
+                }
+            }
+        });
         
         withdrawBtn.addActionListener(new ActionListener()
-		{
-        	public void actionPerformed(ActionEvent e) {
-        		String withValue = withdrawField.getText();
-        		withValue = withValue.replaceAll("[^\\d.]", "");
-        		if (checkingBtn2.isSelected() && !withValue.equals("") && withValue.matches("^[0-9]*\\.?[0-9]*$") && withValue.matches(".*[0-9].*")) {
-        			if (Double.parseDouble(client.getData(user, "03")) < Double.parseDouble(withValue)) {
-        				errLabel.setText("Cannot withdraw more");
-        				errLabel2.setText("than in account");
-        			} else {
-        				client.changeData(user, withValue, "07");
-        				errLabel.setText("");
-    					errLabel2.setText("");
-        			}
-        		} else if (savingsBtn2.isSelected() && !withValue.equals("") && withValue.matches("^[0-9]*\\.?[0-9]*$") && withValue.matches(".*[0-9].*")) {
-        			if (Double.parseDouble(client.getData(user, "04")) < Double.parseDouble(withValue)) {
-        				errLabel.setText("Cannot withdraw more");
-        				errLabel2.setText("than in account");
-        			} else {
-        				client.changeData(user, withValue, "08");
-        				errLabel.setText("");
-    					errLabel2.setText("");
-        			}
-        		} else if (!withValue.matches("^[0-9]*\\.?[0-9]*$")) {
-        			errLabel.setText("Invalid input:");
-        			errLabel2.setText("too many decimal points");
-        		} else if (!withValue.matches(".*[0-9].*")) {
-        			errLabel.setText("Invalid input:");
-        			errLabel2.setText("not enough digits");
-        		}
-        	}
-		});
+        {
+            public void actionPerformed(ActionEvent e) {
+                if(client.isFrozen(user)) {
+                    errLabel.setText("Cannot alter balance");
+                    errLabel2.setText("while frozen.");
+                }
+                else
+                {
+                    String withValue = withdrawField.getText();
+                    withValue = withValue.replaceAll("[^\\d.]", "");
+                    if (checkingBtn2.isSelected() && !withValue.equals("") && withValue.matches("^[0-9]*\\.?[0-9]*$") && withValue.matches(".*[0-9].*")) {
+                        if (Double.parseDouble(client.getData(user, "03")) < Double.parseDouble(withValue)) {
+                            errLabel.setText("Cannot withdraw more");
+                            errLabel2.setText("than in account");
+                        } else {
+                            client.changeData(user, withValue, "07");
+                            errLabel.setText("");
+                            errLabel2.setText("");
+                        }
+                    } else if (savingsBtn2.isSelected() && !withValue.equals("") && withValue.matches("^[0-9]*\\.?[0-9]*$") && withValue.matches(".*[0-9].*")) {
+                        if (Double.parseDouble(client.getData(user, "04")) < Double.parseDouble(withValue)) {
+                            errLabel.setText("Cannot withdraw more");
+                            errLabel2.setText("than in account");
+                        } else {
+                            client.changeData(user, withValue, "08");
+                            errLabel.setText("");
+                            errLabel2.setText("");
+                        }
+                    } else if (!withValue.matches("^[0-9]*\\.?[0-9]*$")) {
+                        errLabel.setText("Invalid input:");
+                        errLabel2.setText("too many decimal points");
+                    } else if (!withValue.matches(".*[0-9].*")) {
+                        errLabel.setText("Invalid input:");
+                        errLabel2.setText("not enough digits");
+                    }
+                }
+            }
+        });
         
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
         @Override

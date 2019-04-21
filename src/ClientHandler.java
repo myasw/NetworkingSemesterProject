@@ -66,7 +66,13 @@ class ClientHandler extends Thread
                         break;
                     case "09:": //Gets the credit score
                         dos.writeUTF(getInfo(data, 6));
-                    	break;
+                        break;
+                    case "10:": //Returns whether account is frozen
+                        dos.writeUTF(getInfo(data, 7));
+                        break;
+                    case "11:": //Freezes accounts
+                        dos.writeUTF(changeFrozen(data));
+                        break;
                     case "99:":
                         this.s.close();
                         done = true;
@@ -198,7 +204,7 @@ class ClientHandler extends Thread
         String newInfo = "";
         String oldLine = "";
         String newLine = "";
-        String temp1 = "", temp2 = neg + "";
+        String temp1, temp2 = neg;
         try{
             br = new BufferedReader(new FileReader("users.txt"));
             String line = br.readLine();
@@ -248,5 +254,67 @@ class ClientHandler extends Thread
             br.close();
         } catch(IOException e) {e.printStackTrace();}
         return balance;
+    }
+    
+    public String changeFrozen(String data)
+    {
+        BufferedReader br = null;
+        String user = "";
+        String oldInfo = "";
+        String newInfo = "";
+        String oldLine = "";
+        String newLine = "";
+        String username, frozen ="";
+        try{
+            br = new BufferedReader(new FileReader("users.txt"));
+            String line = br.readLine();
+            ArrayList<String> userData;
+            username = data.substring(0, data.indexOf("|"));
+            while (line != null)  
+            {
+                oldInfo = oldInfo + line + "\n";
+                userData = viewUser(line);
+                user = userData.get(0);
+                if(user.equals(username)) {frozen = userData.get(7);} 
+                line = br.readLine();  
+            }
+            br.close();
+            br = new BufferedReader(new FileReader("users.txt"));
+            line = br.readLine();
+            if(frozen.equals("acceptable"))
+            {
+                frozen = "frozen";
+            } else {
+                frozen = "acceptable";
+            }
+            
+            while (line != null) {
+                userData = viewUser(line);
+                user = userData.get(0);
+                String newStr = line.substring(line.indexOf("|") + 1);
+                if (user.equals(username)) {
+                    for (int i = 0; i < 6; i++) {
+                        newStr = newStr.substring(newStr.indexOf("|") + 1);
+                    }
+                    oldLine = line;
+                    line = line.substring(0, line.indexOf(newStr)) + frozen;
+                    newLine = line;
+                }
+                
+                line = br.readLine();
+            }
+            oldLine = oldLine.replace('|', '@');
+            newLine = newLine.replace('|', '@');
+            
+            oldInfo = oldInfo.replace('|', '@');
+            newInfo = oldInfo.replaceAll(oldLine, newLine);
+            newInfo = newInfo.replace('@', '|');
+            
+            FileWriter writer = new FileWriter("users.txt");
+            writer.write(newInfo);
+            writer.close();
+            br.close();
+        } catch(IOException e) {e.printStackTrace();}
+        return frozen;
     }
 } 

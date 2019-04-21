@@ -44,6 +44,18 @@ public class BankClient
         return received;
     }
     
+    public boolean isFrozen(String user)
+    {
+        String ret = getData(user, "10");
+        if(ret.equals("frozen"))
+        {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    
     public String changeData(String user, String data, String cmd)
     {
         String received = "";
