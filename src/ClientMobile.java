@@ -58,7 +58,7 @@ import java.awt.event.*;
 
         JButton freezeBtn = new JButton("Freeze/Unfreeze Account");
         freezeBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
-        freezeBtn.setBounds(440, 460, 250, 48);
+        freezeBtn.setBounds(423, 460, 291, 48);
         frame.getContentPane().add(freezeBtn);
         freezeBtn.addActionListener(new ActionListener()
         {
