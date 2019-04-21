@@ -12,7 +12,7 @@ import java.awt.event.*;
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
         
-        String name = client.getName(user);
+        String name = client.getData(user, "02");
         
         JLabel iDFText = new JLabel("Hello " + name + ".");
         iDFText.setHorizontalAlignment(SwingConstants.CENTER);
@@ -108,12 +108,12 @@ import java.awt.event.*;
             public void actionPerformed(ActionEvent e)
             {
                 if (checkingBtn2.isSelected()) {
-                    balanceField.setText("$" + client.getCheckingBalance(user));
+                    balanceField.setText("$" + client.getData(user, "03"));
                     errLabel.setText("");
                     errLabel2.setText("");
                 }
                 else if (savingsBtn2.isSelected()) {
-                    balanceField.setText("$" + client.getSavingsBalance(user));
+                    balanceField.setText("$" + client.getData(user, "04"));
                     errLabel.setText("");
                     errLabel2.setText("");
                 }
@@ -127,12 +127,12 @@ import java.awt.event.*;
 				String depValue = depositField.getText();
 				depValue = depValue.replaceAll("[^\\d.]", "");
 				if (checkingBtn2.isSelected() && !depValue.equals("")) {
-					client.addToChecking(user, depValue);
+					client.changeData(user, depValue, "05");
 					errLabel.setText("");
 					errLabel2.setText("");
 				}
 				else if (savingsBtn2.isSelected() && !depValue.equals("")) {
-					client.addToSavings(user, depValue);
+					client.changeData(user, depValue, "06");
 					errLabel.setText("");
 					errLabel2.setText("");
 				}
@@ -145,20 +145,20 @@ import java.awt.event.*;
         		String withValue = withdrawField.getText();
         		withValue = withValue.replaceAll("[^\\d.]", "");
         		if (checkingBtn2.isSelected() && !withValue.equals("")) {
-        			if (Double.parseDouble(client.getCheckingBalance(user)) < Double.parseDouble(withValue)) {
+        			if (Double.parseDouble(client.getData(user, "03")) < Double.parseDouble(withValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
         			} else {
-        				client.removeFromChecking(user, withValue);
+        				client.changeData(user, withValue, "07");
         				errLabel.setText("");
     					errLabel2.setText("");
         			}
         		} else if (savingsBtn2.isSelected() && !withValue.equals("")) {
-        			if (Double.parseDouble(client.getSavingsBalance(user)) < Double.parseDouble(withValue)) {
+        			if (Double.parseDouble(client.getData(user, "04")) < Double.parseDouble(withValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
         			} else {
-        				client.removeFromSavings(user, withValue);
+        				client.changeData(user, withValue, "08");
         				errLabel.setText("");
     					errLabel2.setText("");
         			}

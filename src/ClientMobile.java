@@ -12,7 +12,7 @@ import java.awt.event.*;
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 		
-		String name = client.getName(user);
+		String name = client.getData(user, "02");
 		
  	    JLabel iDFText = new JLabel("Hello " + name + ".");
 		iDFText.setHorizontalAlignment(SwingConstants.CENTER);
@@ -71,6 +71,15 @@ import java.awt.event.*;
 		scoreBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		scoreBtn.setBounds(457, 385, 218, 38);
 		frame.getContentPane().add(scoreBtn);
+		
+		scoreBtn.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                    scoreField.setText(client.getData(user, "09"));
+            }
+    
+        });
 
  		JButton transferBtn = new JButton("Transfer To...");
 		transferBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
@@ -113,12 +122,12 @@ import java.awt.event.*;
 			public void actionPerformed(ActionEvent e)
 			{
 				if (checkingBtn2.isSelected()) {
-					balanceField.setText("$" + client.getCheckingBalance(user));
+					balanceField.setText("$" + client.getData(user, "03"));
 					errLabel.setText("");
 					errLabel2.setText("");
 				}
 				else if (savingsBtn2.isSelected()) {
-					balanceField.setText("$" + client.getSavingsBalance(user));
+					balanceField.setText("$" + client.getData(user, "04"));
 					errLabel.setText("");
 					errLabel2.setText("");
 				}
@@ -133,23 +142,23 @@ import java.awt.event.*;
 				String tranValue = transferField.getText();
 				tranValue = tranValue.replaceAll("[^\\d.]", "");
 				if (checkingBtn2.isSelected() && !tranValue.equals("")) {
-					if (Double.parseDouble(client.getSavingsBalance(user)) < Double.parseDouble(tranValue)) {
+					if (Double.parseDouble(client.getData(user, "04")) < Double.parseDouble(tranValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
         			} else {
-        				client.removeFromSavings(user, tranValue);
-        				client.addToChecking(user, tranValue);
+        				client.changeData(user, tranValue, "08");
+        				client.changeData(user, tranValue, "05");
         				errLabel.setText("");
     					errLabel2.setText("");
         			}
 				}
 				if (savingsBtn2.isSelected() && !tranValue.equals("")) {
-					if (Double.parseDouble(client.getCheckingBalance(user)) < Double.parseDouble(tranValue)) {
+					if (Double.parseDouble(client.getData(user, "03")) < Double.parseDouble(tranValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
         			} else {
-        				client.removeFromChecking(user, tranValue);
-        				client.addToSavings(user, tranValue);
+        				client.changeData(user, tranValue, "07");
+        				client.changeData(user, tranValue, "06");
         				errLabel.setText("");
     					errLabel2.setText("");
         			}
