@@ -141,7 +141,7 @@ import java.awt.event.*;
 			{
 				String tranValue = transferField.getText();
 				tranValue = tranValue.replaceAll("[^\\d.]", "");
-				if (checkingBtn2.isSelected() && !tranValue.equals("")) {
+				if (checkingBtn2.isSelected() && !tranValue.equals("") && tranValue.matches("^[0-9]*\\.?[0-9]*$")) {
 					if (Double.parseDouble(client.getData(user, "04")) < Double.parseDouble(tranValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
@@ -151,8 +151,7 @@ import java.awt.event.*;
         				errLabel.setText("");
     					errLabel2.setText("");
         			}
-				}
-				if (savingsBtn2.isSelected() && !tranValue.equals("")) {
+				} else if (savingsBtn2.isSelected() && !tranValue.equals("") && tranValue.matches("^[0-9]*\\.?[0-9]*$")) {
 					if (Double.parseDouble(client.getData(user, "03")) < Double.parseDouble(tranValue)) {
         				errLabel.setText("Cannot withdraw more");
         				errLabel2.setText("than in account");
@@ -162,6 +161,9 @@ import java.awt.event.*;
         				errLabel.setText("");
     					errLabel2.setText("");
         			}
+				} else if (!tranValue.matches("^[0-9]*\\.?[0-9]*$")) {
+					errLabel.setText("Invalid input:");
+        			errLabel2.setText("too many decimal points");
 				}
 			}
 		});
