@@ -13,7 +13,7 @@ public class BankClient
             Scanner scn = new Scanner(System.in); 
       
             //Establish the connection with server port
-            int port = 5052;
+            int port = 9001;
             s = new Socket(ip, port); 
             
             //Close scanner

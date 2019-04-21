@@ -7,8 +7,7 @@ public class BankServer
     public static void main(String[] args) throws IOException  
     { 
         //Port number for server to listen to
-        int port = Integer.parseInt(args[0]);
-        ServerSocket ss = new ServerSocket(port); 
+        ServerSocket ss = new ServerSocket(9001); 
           
         //Wait for clients to connect
         while (true)  
