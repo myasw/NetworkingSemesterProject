@@ -1,3 +1,4 @@
+//Matthew Yaswinski & Joshua Del Toro
 import java.io.*; 
 import java.net.*;
 import java.util.*;
@@ -47,6 +48,7 @@ public class BankClient
     public boolean isFrozen(String user)
     {
         String ret = getData(user, "10");
+        // check if the account is frozen or not
         if(ret.equals("frozen"))
         {
             return true;

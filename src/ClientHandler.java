@@ -1,3 +1,4 @@
+//Matthew Yaswinski & Joshua Del Toro
 import java.io.*; 
 import java.text.*; 
 import java.util.*; 
@@ -94,11 +95,11 @@ class ClientHandler extends Thread
             String line = br.readLine();
             ArrayList<String> userData;
             String userAndPass = "";
-            while (line != null)  
+            while (line != null)  //look through all lines in text file
             {
                 userData = viewUser(line);
                 userAndPass = userData.get(0) + "|" + userData.get(1);
-                if(userAndPass.equals(data)) {ret = "true";}  
+                if(userAndPass.equals(data)) {ret = "true";}  //check if the username already exists
                 line = br.readLine();  
             }
             br.close();
@@ -118,7 +119,7 @@ class ClientHandler extends Thread
             {
                 userData = viewUser(line);
                 user = userData.get(0);
-                if(user.equals(data)) {info = userData.get(id);} 
+                if(user.equals(data)) {info = userData.get(id);} //check the element in the arrayList for the appropriate user
                 line = br.readLine();  
             }
             br.close();
@@ -134,7 +135,7 @@ class ClientHandler extends Thread
         String info = "";
         while(bar != -1)
         {
-            info=line.substring(0,bar);
+            info=line.substring(0,bar); //separate by vertical bars
             line=line.substring(bar+1);
             userData.add(info);
             bar = line.indexOf("|");
@@ -156,6 +157,7 @@ class ClientHandler extends Thread
             {
                 userData = viewUser(line);
                 user = userData.get(0);
+                //Retrieve the full name of the user for printing in the GUI
                 if(user.equals(data)) {name = userData.get(2) + " " + userData.get(3);}  
                 line = br.readLine();  
             }
@@ -211,16 +213,16 @@ class ClientHandler extends Thread
             ArrayList<String> userData;
             temp1 = data.substring(0, data.indexOf("|"));
             temp2 += data.substring(data.indexOf("|") + 1);
-            while (line != null)  
+            while (line != null)  //looks through all lines in text file
             {
                 oldInfo = oldInfo + line + "\n";
                 userData = viewUser(line);
                 user = userData.get(0);
-                if(user.equals(temp1)) {balance = userData.get(balID);} 
+                if(user.equals(temp1)) {balance = userData.get(balID);} //gets the user's balance
                 line = br.readLine();  
             }
             br.close();
-            br = new BufferedReader(new FileReader("users.txt"));
+            br = new BufferedReader(new FileReader("users.txt")); //resets br
             line = br.readLine();
             newBal = Double.parseDouble(balance) + Double.parseDouble(temp2);
             
@@ -229,6 +231,7 @@ class ClientHandler extends Thread
                 user = userData.get(0);
                 String newStr = line.substring(line.indexOf("|") + 1);
                 String newStr2 = "";
+                //adds new value into line of text file
                 if (user.equals(temp1)) {
                     for (int i = 0; i < balID - 1; i++) {
                         newStr = newStr.substring(newStr.indexOf("|") + 1);
@@ -241,15 +244,15 @@ class ClientHandler extends Thread
                 
                 line = br.readLine();
             }
-            oldLine = oldLine.replace('|', '@');
+            oldLine = oldLine.replace('|', '@'); //replaces vertical bar to prevent problems with regex
             newLine = newLine.replace('|', '@');
             
             oldInfo = oldInfo.replace('|', '@');
             newInfo = oldInfo.replaceAll(oldLine, newLine);
-            newInfo = newInfo.replace('@', '|');
+            newInfo = newInfo.replace('@', '|'); //puts vertical bar back in file
             
             FileWriter writer = new FileWriter("users.txt");
-            writer.write(newInfo);
+            writer.write(newInfo); //overwrites file with new data
             writer.close();
             br.close();
         } catch(IOException e) {e.printStackTrace();}
@@ -281,6 +284,7 @@ class ClientHandler extends Thread
             br.close();
             br = new BufferedReader(new FileReader("users.txt"));
             line = br.readLine();
+            //changes status of account
             if(frozen.equals("acceptable"))
             {
                 frozen = "frozen";
@@ -303,14 +307,15 @@ class ClientHandler extends Thread
                 
                 line = br.readLine();
             }
+            //replaces vertical bar to prevent conflicts with regex
             oldLine = oldLine.replace('|', '@');
             newLine = newLine.replace('|', '@');
             
             oldInfo = oldInfo.replace('|', '@');
             newInfo = oldInfo.replaceAll(oldLine, newLine);
-            newInfo = newInfo.replace('@', '|');
+            newInfo = newInfo.replace('@', '|'); //replaces character with vertical bar
             
-            FileWriter writer = new FileWriter("users.txt");
+            FileWriter writer = new FileWriter("users.txt"); //overwrites file with new data
             writer.write(newInfo);
             writer.close();
             br.close();

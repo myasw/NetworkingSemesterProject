@@ -1,3 +1,4 @@
+//Matthew Yaswinski & Joshua Del Toro
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -12,16 +13,19 @@ public class ClientVersion {
         f.getContentPane().setLayout(null);
         f.setVisible(true);
 
+        //text describing the GUI
         JLabel iDFText2 = new JLabel("Choose a version");
         iDFText2.setHorizontalAlignment(SwingConstants.CENTER);
         iDFText2.setFont(new Font("Times New Roman", Font.BOLD, 30));
         iDFText2.setBounds(148, 152, 501, 58);
         f.getContentPane().add(iDFText2);
                 
+        //button to select mobile GUI
         JButton mobileBtn = new JButton("Mobile");
         mobileBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
         mobileBtn.setBounds(90, 385, 218, 38);
         f.getContentPane().add(mobileBtn);
+        //selects mobile GUI
         mobileBtn.addActionListener(new ActionListener() 
         { 
             public void actionPerformed(ActionEvent e) { 
@@ -30,10 +34,12 @@ public class ClientVersion {
             }
         });
                 
+        //button for selecting ATM GUI
         JButton atmBtn = new JButton("ATM");
         atmBtn.setFont(new Font("Times New Roman", Font.BOLD, 20));
         atmBtn.setBounds(457, 385, 218, 38);
         f.getContentPane().add(atmBtn);
+        //selects ATM GUI
         atmBtn.addActionListener(new ActionListener() 
         { 
             public void actionPerformed(ActionEvent e) { 
